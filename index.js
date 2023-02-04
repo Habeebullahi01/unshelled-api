@@ -25,10 +25,17 @@ app.get('/', (req, res) => {
   res.send('Olist Server')
 })
 
-app.listen(4000, async () => {
-  await client.connect((err) => {
-    console.log('Unable to connect to database.')
-    console.log(err)
+client
+  .connect()
+  .then(
+    app.listen(4000, async () => {
+      // (err) => {
+      // console.log('Unable to connect to database.')
+      // console.log(err)
+      // }
+      console.log('Olist server is running.')
+    })
+  )
+  .catch((e) => {
+    console.log('Unable to connect to server')
   })
-  console.log('Olist server is running.')
-})
