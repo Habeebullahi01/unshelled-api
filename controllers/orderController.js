@@ -9,7 +9,7 @@ const getOrderItems = async (
   const sortType =
     sortByPrice === 'true' || sortByPrice >= 1
       ? { price: -1 }
-      : { shippingLimitDate: -1 }
+      : { shipping_limit_date: 1 }
   const collection = client.db('olist').collection('olist_order_items_dataset')
   const total = await collection.countDocuments({ seller_id: sellerId })
   const skip = offset * limit > total ? 0 : offset * limit
